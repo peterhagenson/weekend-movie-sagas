@@ -5,7 +5,7 @@ import MovieDetail from '../MovieDetail/MovieDetail'
 import { useHistory } from 'react-router-dom'
 
 //WILL NEED USE HISTORY TO SEND TO MOVIE DETAIL I THINK
-//add a click events that directs user to details page
+
 
 
 function MovieList() {
@@ -19,8 +19,13 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-    const toDetails = () => {
-        history.push('/details');
+    const toDetails = (movieId) => {
+        console.log(movieId);
+        dispatch({
+            type: 'FETCH_DETAIL_MOVIE',
+            payload: movieId
+        })
+        history.push('/details')
     }
 
     return (
@@ -31,7 +36,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} onClick={toDetails} />
+                            <img src={movie.poster} alt={movie.title} onClick={() => toDetails(movie.id)} />
                         </div>
                     );
                 })}
