@@ -17,6 +17,10 @@ router.get('/', (req, res) => {
 });
 
 //create GET for individual movie
+router.get('/:id', (req, res) => {
+console.log('in detail get', req.params.id)
+})
+
 
 router.post('/', (req, res) => {
   console.log(req.body);

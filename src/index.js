@@ -17,12 +17,15 @@ function* rootSaga() {
     yield takeEvery('FETCH_DETAIL_MOVIE', fetchDetailMovie)
 }
 
-function* fetchDetailMovie(movieId) {
-    console.log(movieId)
-    // try {
-    //     const detailMovie = yield axios.get(`/api/movie/${movieId}`)
-    //     yield put ({type: ''})
-    // }
+function* fetchDetailMovie(action) {
+    console.log(action)
+    try {
+        const detailMovie = yield axios.get(`/api/movie/${action.payload}`)
+        console.log(detailMovie)
+        yield put ({type: 'SET_DETAIL_MOVIE', payload: detailMovie})
+    } catch {
+        console.log('set detail movie error')
+    }
 }
 
 function* fetchAllMovies() {
