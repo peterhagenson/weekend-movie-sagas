@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
+import MovieDetail from '../MovieDetail/MovieDetail'
 
 //WILL NEED USE HISTORY TO SEND TO MOVIE DETAIL I THINK
+//add a click events that directs user to details page
+
 
 function MovieList() {
 
