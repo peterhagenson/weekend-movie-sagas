@@ -1,6 +1,13 @@
+import { HashRouter as Router, Route } from 'react-router-dom';
+
+
 function MovieDetail() {
     return (
-        <p>detail page</p>
+        <Router >
+            <Route path="/details">
+                <p>detail page</p>
+            </Route>
+        </Router>
     )
 }
 
