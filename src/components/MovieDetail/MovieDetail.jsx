@@ -18,33 +18,33 @@ function MovieDetail() {
     return (
         <Router >
             <Route path="/details">
-                <p>detail page</p>
-                <button onClick={navToHome}>Back to List</button>
+
                 <div>
-                    <table>
-                        <tbody>
+                    {/* <table>
+                        <tbody> */}
 
-                            {detailMovie.map((movie) => {
-                                return (
-                                    <>
-                                        <h1>{movie.title}</h1>
-                                        {movie.array_agg.map((genre) => {
-                                            return (
-                                                <p>{genre}</p>
-                                            )
-                                        })}
-                                        <img src={movie.poster}></img>
-                                        <h3>{movie.description}</h3>
+                    {detailMovie.map((movie) => {
+                        return (
+                            <>
+                                <h1>{movie.title}</h1>
+                                {movie.array_agg.map((genre) => {
+                                    return (
+                                        <p>{genre}</p>
+                                    )
+                                })}
+                                <img src={movie.poster}></img>
+                                <h3>{movie.description}</h3>
 
-                                    </>
+                            </>
 
-                                )
+                        )
 
-                            })}
+                    })}
 
-                        </tbody>
-                    </table>
+                    {/* </tbody>
+                    </table> */}
                 </div>
+                <button onClick={navToHome}>Back to List</button>
             </Route>
         </Router>
     )
