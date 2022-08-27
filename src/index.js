@@ -21,8 +21,8 @@ function* fetchDetailMovie(action) {
     console.log(action)
     try {
         const detailMovie = yield axios.get(`/api/movie/${action.payload}`)
-        console.log(detailMovie)
-        yield put ({type: 'SET_DETAIL_MOVIE', payload: detailMovie})
+        console.log(detailMovie.data)
+        yield put ({type: 'SET_DETAIL_MOVIE', payload: detailMovie.data})
     } catch {
         console.log('set detail movie error')
     }
@@ -43,6 +43,17 @@ function* fetchAllMovies() {
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
+
+//used to store movie detail page info
+const detailMovie = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_DETAIL_MOVIE':
+            console.log(action.payload)
+            return action.payload;
+        default:
+            return state;
+    }
+}
 
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
@@ -69,6 +80,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        detailMovie
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

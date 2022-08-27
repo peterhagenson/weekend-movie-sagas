@@ -1,9 +1,13 @@
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 
 
 function MovieDetail() {
+
+    const detailMovie = useSelector(store => store.detailMovie)
+    console.log(detailMovie);
 
     const history = useHistory();
 
@@ -16,6 +20,31 @@ function MovieDetail() {
             <Route path="/details">
                 <p>detail page</p>
                 <button onClick={navToHome}>Back to List</button>
+                <div>
+                    <table>
+                        <tbody>
+
+                            {detailMovie.map((movie) => {
+                                return (
+                                    <>
+                                        <h1>{movie.title}</h1>
+                                        {movie.array_agg.map((genre) => {
+                                            return (
+                                                <p>{genre}</p>
+                                            )
+                                        })}
+                                        <img src={movie.poster}></img>
+                                        <h3>{movie.description}</h3>
+
+                                    </>
+
+                                )
+
+                            })}
+
+                        </tbody>
+                    </table>
+                </div>
             </Route>
         </Router>
     )
