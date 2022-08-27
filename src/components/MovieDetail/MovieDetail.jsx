@@ -53,18 +53,23 @@ function MovieDetail() {
                 <div>
                     {/* <table>
                         <tbody> */}
-                    <p>params object: {JSON.stringify(params)}</p>
                     {detailMovie.map((movie) => {
                         return (
 
                             <>
                                 <h1>{movie.title}</h1>
-                                {movie.array_agg.map((genre) => {
-                                    return (
-                                        <p>{genre}</p>
-                                    )
-                                })}
                                 <img src={movie.poster}></img>
+                                <div class="detailGenre">
+                                    {movie.array_agg.map((genre) => {
+
+                                        return (
+
+                                            <p class="detailGenreText">{genre}</p>
+
+                                        )
+
+                                    })}
+                                </div>
                                 <h3>{movie.description}</h3>
                                 {/* <Route path="/editMovie" exact>
                                     <EditMovie movie={movie} />
