@@ -44,6 +44,21 @@ function* fetchAllMovies() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
+const addMovie = (state = {title: ' ', genre: ' ', posterUrl: ' ', description: ' '}, action) => {
+    if (action.type === 'ADD_MOVIE_TITLE') {
+        return {...state, title: action.payload}
+    } else if (action.type === 'ADD_MOVIE_GENRE') {
+        return {...state, genre: action.payload}
+} else if (action.type === 'ADD_MOVIE_POSTER') {
+    return {...state, posterUrl: action.payload}
+} else if (action.type === 'ADD_MOVIE_DESCRIPTION') {
+    return {...state, description: action.payload}
+} else if (action.type === 'GENRE') {
+    return {...state, genre: action.payload}
+}
+return state
+}
+
 //used to store movie detail page info
 const detailMovie = (state = [], action) => {
     switch (action.type) {
@@ -80,7 +95,8 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        detailMovie
+        detailMovie,
+        addMovie
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
