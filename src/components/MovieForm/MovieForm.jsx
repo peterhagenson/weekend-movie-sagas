@@ -10,7 +10,7 @@ function MovieForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const movieToAdd = useSelector(store => store.addMovie)
+    //const movieToAdd = useSelector(store => store.addMovie)
 
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
@@ -20,39 +20,18 @@ function MovieForm() {
 
     const addNewMovie = (event) => {
         console.log(title, genre, posterUrl, description)
-        axios({
-            method: 'POST',
-            url: '/api/movie',
-            data: {
+
+
+        dispatch({
+            type: 'ADD_MOVIE',
+            payload: {
                 title: title,
                 genre_id: genre,
                 poster: posterUrl,
                 description: description
             }
-        }).then((response) => {
-            console.log('response from server', response);
-        }).catch((err) => {
-            console.error(err)
         })
-        history.push('/')
-
-        // dispatch({
-        //     type: 'ADD_MOVIE_TITLE',
-        //     payload: title
-        // })
-        // dispatch({
-        //     type: 'ADD_MOVIE_GENRE',
-        //     payload: genre
-        // })
-        // dispatch({
-        //     type: 'ADD_MOVIE_POSTER',
-        //     payload: posterUrl
-        // })
-        // dispatch({
-        //     type: 'ADD_MOVIE_DESCRIPTION',
-        //     payload: description
-        // })
-        // console.log(movieToAdd);
+        history.push('/');
 
     }
 

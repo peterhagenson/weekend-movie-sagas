@@ -15,6 +15,16 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_DETAIL_MOVIE', fetchDetailMovie)
+    yield takeEvery('ADD_MOVIE', addMovie)
+}
+
+function* addMovie(action) {
+    try{
+        yield axios.post('/api/movie', action.payload);
+        yield put({type: 'FETCH_MOVIES'})
+         }catch{
+        console.error('ERROR IN POST', err)
+    }
 }
 
 function* fetchDetailMovie(action) {
@@ -44,20 +54,7 @@ function* fetchAllMovies() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-const addMovie = (state = {title: ' ', genre: ' ', posterUrl: ' ', description: ' '}, action) => {
-    if (action.type === 'ADD_MOVIE_TITLE') {
-        return {...state, title: action.payload}
-    } else if (action.type === 'ADD_MOVIE_GENRE') {
-        return {...state, genre: action.payload}
-} else if (action.type === 'ADD_MOVIE_POSTER') {
-    return {...state, posterUrl: action.payload}
-} else if (action.type === 'ADD_MOVIE_DESCRIPTION') {
-    return {...state, description: action.payload}
-} else if (action.type === 'GENRE') {
-    return {...state, genre: action.payload}
-}
-return state
-}
+
 
 //used to store movie detail page info
 const detailMovie = (state = [], action) => {
