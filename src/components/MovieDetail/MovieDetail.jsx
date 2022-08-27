@@ -1,13 +1,23 @@
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { useHistory, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import EditMovie from '../EditMovie/EditMovie'
+import { useEffect } from 'react'
 
 
 
 function MovieDetail() {
 
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        getDetail();
+    }, []);
+
     const detailMovie = useSelector(store => store.detailMovie)
+
+
 
 
     const params = useParams();
@@ -22,6 +32,19 @@ function MovieDetail() {
         // console.log(detailMovie.id);
         history.push(`/editMovie/${params.id}`)
     }
+
+    const getDetail = () => {
+        dispatch({
+            type: 'FETCH_DETAIL_MOVIE',
+            payload: params.id
+        })
+        dispatch({
+            type: 'GENRES',
+            payload: params.id
+        })
+    }
+
+
 
     return (
         <Router >
@@ -58,10 +81,11 @@ function MovieDetail() {
                 </div>
                 <button onClick={navToEdit}>Edit Movie</button>
                 <button onClick={navToHome}>Back to List</button>
-
             </Route>
         </Router>
     )
 }
+
+
 
 export default MovieDetail

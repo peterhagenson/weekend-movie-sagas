@@ -21,14 +21,14 @@ function MovieList() {
 
     const toDetails = (movieId) => {
         console.log(movieId);
-        dispatch({
-            type: 'FETCH_DETAIL_MOVIE',
-            payload: movieId
-        })
-        dispatch({
-            type: 'GENRES',
-            payload: movieId
-        })
+        // dispatch({
+        //     type: 'FETCH_DETAIL_MOVIE',
+        //     payload: movieId
+        // })
+        // dispatch({
+        //     type: 'GENRES',
+        //     payload: movieId
+        // })
         history.push(`/details/${movieId}`)
     }
 
