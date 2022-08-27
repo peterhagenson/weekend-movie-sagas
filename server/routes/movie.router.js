@@ -2,6 +2,22 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+router.put('/', (req, res) => {
+  console.log(req.body);
+  const query = `UPDATE "movies"
+                SET "title" = $1, "description" = $2
+                WHERE "id" = $3;`;
+    pool.query(query, [req.body.newTitle, req.body.newDescription, req.body.id])
+.then(result => {
+    console.log("update success");
+    res.sendStatus(201)
+}).catch(err => {
+  console.log('ERROR IN UPDATE', err);
+  res.sendStatus(500)
+})
+})
+
+
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;

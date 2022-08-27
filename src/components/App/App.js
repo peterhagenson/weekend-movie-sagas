@@ -3,6 +3,7 @@ import './App.css';
 import MovieList from '../MovieList/MovieList'
 import MovieDetail from '../MovieDetail/MovieDetail'
 import MovieForm from '../MovieForm/MovieForm'
+import EditMovie from '../EditMovie/EditMovie'
 
 function App() {
   return (
@@ -12,11 +13,14 @@ function App() {
         <Route path="/" exact>
           <MovieList />
         </Route>
-        <Route path="/details" exact>
+        <Route path="/details/:id" exact>
           <MovieDetail/>
         </Route>
         <Route path="/addMovie" exact>
           <MovieForm />
+        </Route>
+        <Route path="/editMovie/:id" exact>
+          <EditMovie/>
         </Route>
         {/* Details page */}
 

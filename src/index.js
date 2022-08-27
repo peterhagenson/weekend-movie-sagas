@@ -16,6 +16,17 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_DETAIL_MOVIE', fetchDetailMovie)
     yield takeEvery('ADD_MOVIE', addMovie)
+    yield takeEvery('EDIT_MOVIE', editMovie)
+}
+
+function* editMovie(action) {
+    console.log(action.payload)
+    try{
+        yield axios.put('/api/movie', action.payload);
+        yield put({type: 'FETCH_MOVIES'})
+    }catch{
+        console.error('ERROR IN PUT', err)
+    }
 }
 
 function* addMovie(action) {

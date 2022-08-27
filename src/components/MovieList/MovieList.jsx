@@ -29,7 +29,7 @@ function MovieList() {
             type: 'GENRES',
             payload: movieId
         })
-        history.push('/details')
+        history.push(`/details/${movieId}`)
     }
 
     const toAddMovie = () => {

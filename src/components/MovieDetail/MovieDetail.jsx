@@ -1,13 +1,16 @@
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import EditMovie from '../EditMovie/EditMovie'
 
 
 
 function MovieDetail() {
 
     const detailMovie = useSelector(store => store.detailMovie)
-    console.log(detailMovie);
+
+
+    const params = useParams();
 
     const history = useHistory();
 
@@ -15,16 +18,22 @@ function MovieDetail() {
         history.push('/')
     }
 
+    const navToEdit = () => {
+        // console.log(detailMovie.id);
+        history.push(`/editMovie/${params.id}`)
+    }
+
     return (
         <Router >
-            <Route path="/details">
+            <Route path="/details/:id">
 
                 <div>
                     {/* <table>
                         <tbody> */}
-
+                    <p>params object: {JSON.stringify(params)}</p>
                     {detailMovie.map((movie) => {
                         return (
+
                             <>
                                 <h1>{movie.title}</h1>
                                 {movie.array_agg.map((genre) => {
@@ -34,6 +43,9 @@ function MovieDetail() {
                                 })}
                                 <img src={movie.poster}></img>
                                 <h3>{movie.description}</h3>
+                                {/* <Route path="/editMovie" exact>
+                                    <EditMovie movie={movie} />
+                                </Route> */}
 
                             </>
 
@@ -44,7 +56,9 @@ function MovieDetail() {
                     {/* </tbody>
                     </table> */}
                 </div>
+                <button onClick={navToEdit}>Edit Movie</button>
                 <button onClick={navToHome}>Back to List</button>
+
             </Route>
         </Router>
     )
