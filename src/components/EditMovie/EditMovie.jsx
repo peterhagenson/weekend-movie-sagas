@@ -46,7 +46,7 @@ function EditMovie() {
                 id: params.id
             }
         })
-        history.push(`/details/${params.id}`)
+        // history.push(`/details/${params.id}`)
     }
 
     const cancelEdit = () => {
@@ -57,13 +57,14 @@ function EditMovie() {
         <Router>
             <Route path="/editMovie/:id">
                 <ThemeProvider theme={theme}>
-                    <Card sx={{ width: 700, borderRadius: '16px' }} variant="outlined" className="detailCard">
-                        <CardContent>
-                            <>
-                                <div>
-                                    <h3>Edit Movie</h3>
-                                </div>
-                                <form onSubmit={editMovie}>
+                    <form onSubmit={editMovie}>
+                        <Card sx={{ width: 700, borderRadius: '16px', backgroundColor: '#fff8dc' }} variant="outlined" className="detailCard">
+                            <CardContent>
+                                <>
+                                    <div>
+                                        <h3>Edit Movie</h3>
+                                    </div>
+
                                     <div>
                                         <TextField onChange={(event) => (setNewTitle(event.target.value))} fullWidth placeholder="new title" size="small" />
                                     </div>
@@ -74,15 +75,16 @@ function EditMovie() {
                                     {/* needs to set variables and go to details page */}
 
 
-                                </form>
-                            </>
-                        </CardContent>
-                    </Card >
-                    <div>
-                        <Button type="submit" sx={{ mr: 1, mt: 2 }} variant="outlined">Save</Button>
-                        {/* needs to empty variables and go do details page */}
-                        <Button onClick={cancelEdit} sx={{ ml: 1, mt: 2 }} variant="outlined">Cancel</Button>
-                    </div>
+
+                                </>
+                            </CardContent>
+                        </Card >
+                        <div>
+                            <Button type="submit" sx={{ mr: 1, mt: 2, backgroundColor: '#fff8dc' }} variant="outlined">Save</Button>
+                            {/* needs to empty variables and go do details page */}
+                            <Button onClick={cancelEdit} sx={{ ml: 1, mt: 2, backgroundColor: '#fff8dc' }} variant="outlined">Cancel</Button>
+                        </div>
+                    </form>
                 </ThemeProvider>
             </Route>
         </Router>

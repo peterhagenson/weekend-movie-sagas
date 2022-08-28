@@ -22,7 +22,7 @@ const theme = createTheme({
 
         },
         secondary: {
-            main: '#ffc107',
+            main: '#fff9c4',
         },
     },
 });
@@ -83,13 +83,13 @@ function MovieList() {
                                 <h1>Browse Movies</h1>
                             </div>
                             <div className="headerDiv">
-                                <Button onClick={toAddMovie} variant="outlined">Add Movie</Button>
+                                <Button onClick={toAddMovie} variant="outlined" sx={{ backgroundColor: '#fff8dc', mt: 2 }}>Add Movie</Button>
                             </div>
                         </div>
                         <section className="movies">
                             {movies.map(movie => {
                                 return (
-                                    <Card sx={{ width: 200, height: 370, mb: 2, borderRadius: '16px' }} variant="outlined" className="listCard">
+                                    <Card sx={{ width: 200, height: 370, mb: 4, mr: 2, ml: 2, borderRadius: '16px', backgroundColor: '#fff8dc' }} variant="outlined" className="listCard">
 
                                         <CardContent >
                                             <div key={movie.id} className="cardDiv">

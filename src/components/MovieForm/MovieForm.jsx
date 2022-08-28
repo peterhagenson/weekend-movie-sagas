@@ -71,11 +71,12 @@ function MovieForm() {
         <Router>
             <Route path="/addMovie">
                 <ThemeProvider theme={theme}>
-                    <Card sx={{ width: 700, borderRadius: '16px' }} variant="outlined" className="detailCard">
-                        <CardContent>
+                    <form onSubmit={() => addNewMovie()}>
+                        <Card sx={{ width: 700, borderRadius: '16px', backgroundColor: '#fff8dc' }} variant="outlined" className="detailCard">
+                            <CardContent>
 
 
-                            <form onSubmit={() => addNewMovie()}>
+
                                 {/* <input onChange={setGenre}></input> */}
                                 <div>
                                     <TextField onChange={(event) => (setTitle(event.target.value))} size="small" fullWidth label="title" placeholder="movie title" />
@@ -106,15 +107,17 @@ function MovieForm() {
                                     <TextField onChange={(event) => (setDescription(event.target.value))} multiline minRows={4}
                                         maxRows={10} fullWidth size="small" sx={{ mt: 2 }} label="movie description" placeholder="movie description" />
                                 </div>
-                                <Button type="submit" size="small" sx={{ mr: 1, mt: 2 }} variant="outlined">Submit</Button>
-                                <Button variant="outlined" size="small" sx={{ ml: 1, mt: 2 }} onClick={backToList}>Cancel</Button>
 
-                            </form>
-                        </CardContent>
-                    </Card >
-                    <div>
 
-                    </div>
+
+                            </CardContent>
+                        </Card >
+
+                        <div>
+                            <Button type="submit" size="small" sx={{ mr: 1, mt: 2, backgroundColor: '#fff8dc' }} variant="outlined">Submit</Button>
+                            <Button variant="outlined" size="small" sx={{ ml: 1, mt: 2, backgroundColor: '#fff8dc' }} onClick={backToList}>Cancel</Button>
+                        </div>
+                    </form>
                 </ThemeProvider>
             </Route >
         </Router >

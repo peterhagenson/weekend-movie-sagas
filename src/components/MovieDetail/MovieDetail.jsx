@@ -67,7 +67,7 @@ function MovieDetail() {
         <Router >
             <Route path="/details/:id">
                 <ThemeProvider theme={theme}>
-                    <Card sx={{ width: 700, borderRadius: '16px' }} variant="outlined" className="detailCard">
+                    <Card sx={{ width: 700, borderRadius: '16px', backgroundColor: '#fff8dc' }} variant="outlined" className="detailCard">
                         <CardContent>
                             <div>
                                 {/* <table>
@@ -105,8 +105,8 @@ function MovieDetail() {
                             </div>
                         </CardContent>
                     </Card >
-                    <Button onClick={navToEdit} sx={{ mr: 1, mt: 2 }} variant="outlined">Edit Movie</Button>
-                    <Button onClick={navToHome} sx={{ ml: 1, mt: 2 }} variant="outlined">Back to List</Button>
+                    <Button onClick={navToEdit} sx={{ mr: 1, mt: 2, mb: 2, backgroundColor: '#fff8dc' }} variant="outlined">Edit Movie</Button>
+                    <Button onClick={navToHome} sx={{ ml: 1, mt: 2, mb: 2, backgroundColor: '#fff8dc' }} variant="outlined">Back to List</Button>
                 </ThemeProvider>
             </Route>
         </Router>
