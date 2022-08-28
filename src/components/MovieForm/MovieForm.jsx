@@ -4,6 +4,28 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import TextField from '@mui/material/TextField';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#212121',
+            spacing: 4,
+
+        },
+        secondary: {
+            main: '#ffc107',
+        },
+    },
+});
+
+
 
 function MovieForm() {
 
@@ -21,18 +43,25 @@ function MovieForm() {
     const addNewMovie = (event) => {
         console.log(title, genre, posterUrl, description)
 
+        if (posterUrl.length && title.length) {
 
-        dispatch({
-            type: 'ADD_MOVIE',
-            payload: {
-                title: title,
-                genre_id: genre,
-                poster: posterUrl,
-                description: description
-            }
-        })
+
+            dispatch({
+                type: 'ADD_MOVIE',
+                payload: {
+                    title: title,
+                    genre_id: genre,
+                    poster: posterUrl,
+                    description: description
+                }
+            })
+        }
         history.push('/');
 
+    }
+
+    const backToList = () => {
+        history.push('/')
     }
 
 
@@ -41,33 +70,57 @@ function MovieForm() {
     return (
         <Router>
             <Route path="/addMovie">
-                <form onSubmit={addNewMovie}>
-                    <input onChange={(event) => (setTitle(event.target.value))} placeholder="movie title"></input>
-                    <select onChange={(event) => (setGenre(event.target.value))} placeholder="movie genre" id="genre">
+                <ThemeProvider theme={theme}>
+                    <form onSubmit={() => addNewMovie()}>
+                        <Card sx={{ width: 700, borderRadius: '16px', backgroundColor: '#fff8dc' }} variant="outlined" className="detailCard">
+                            <CardContent>
 
-                        <option value="genre"></option>
-                        <option id="1" value="1">Adventure</option>
-                        <option id="2" value="2">Animated</option>
-                        <option id="3" value="3">Biographical</option>
-                        <option id="4" value="4">Comedy</option>
-                        <option id="5" value="5">Disaster</option>
-                        <option id="6" value="6">Drama</option>
-                        <option id="7" value="7">Epic</option>
-                        <option id="8" value="8">Fantasy</option>
-                        <option id="9" value="9">Musical</option>
-                        <option id="10" value="10">Romantic</option>
-                        <option id="11" value="11">Science Fiction</option>
-                        <option id="12" value="12">Space-Opera</option>
-                        <option id="13" value="13">Superhero</option>
-                    </select>
-                    <input onChange={(event) => (setPosterUrl(event.target.value))} placeholder="movie poster url"></input>
-                    <textarea onChange={(event) => (setDescription(event.target.value))} placeholder="movie description"></textarea>
-                    <button type="submit">Submit</button>
-                    <button>Cancel</button>
 
-                </form>
-            </Route>
-        </Router>
+
+                                {/* <input onChange={setGenre}></input> */}
+                                <div>
+                                    <TextField onChange={(event) => (setTitle(event.target.value))} size="small" fullWidth label="title" placeholder="movie title" />
+                                </div>
+                                <div>
+                                    <Select onChange={(event) => (setGenre(event.target.value))} autoWidth label="genre" fullWidth sx={{ minWidth: 185, mt: 2 }} size="small" id="genre" value={genre}>
+
+
+                                        <MenuItem id="1" value={1}>Adventure</MenuItem>
+                                        <MenuItem id="2" value={2}>Animated</MenuItem>
+                                        <MenuItem id="3" value={3}>Biographical</MenuItem>
+                                        <MenuItem id="4" value={4}>Comedy</MenuItem>
+                                        <MenuItem id="5" value={5}>Disaster</MenuItem>
+                                        <MenuItem id="6" value={6}>Drama</MenuItem>
+                                        <MenuItem id="7" value={7}>Epic</MenuItem>
+                                        <MenuItem id="8" value={8}>Fantasy</MenuItem>
+                                        <MenuItem id="9" value={9}>Musical</MenuItem>
+                                        <MenuItem id="10" value={10}>Romantic</MenuItem>
+                                        <MenuItem id="11" value={11}>Science Fiction</MenuItem>
+                                        <MenuItem id="12" value={12}>Space-Opera</MenuItem>
+                                        <MenuItem id="13" value={13}>Superhero</MenuItem>
+                                    </Select>
+                                </div>
+                                <div>
+                                    <TextField onChange={(event) => (setPosterUrl(event.target.value))} size="small" fullWidth sx={{ mt: 2 }} label="movie poster url" placeholder="movie poster url" />
+                                </div>
+                                <div>
+                                    <TextField onChange={(event) => (setDescription(event.target.value))} multiline minRows={4}
+                                        maxRows={10} fullWidth size="small" sx={{ mt: 2 }} label="movie description" placeholder="movie description" />
+                                </div>
+
+
+
+                            </CardContent>
+                        </Card >
+
+                        <div>
+                            <Button type="submit" size="small" sx={{ mr: 1, mt: 2, backgroundColor: '#fff8dc' }} variant="outlined">Submit</Button>
+                            <Button variant="outlined" size="small" sx={{ ml: 1, mt: 2, backgroundColor: '#fff8dc' }} onClick={backToList}>Cancel</Button>
+                        </div>
+                    </form>
+                </ThemeProvider>
+            </Route >
+        </Router >
     )
 
 }

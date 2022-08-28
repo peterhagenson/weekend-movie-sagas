@@ -24,6 +24,7 @@ function* editMovie(action) {
     try{
         yield axios.put('/api/movie', action.payload);
         yield put({type: 'FETCH_MOVIES'})
+        history.push(`/details/${params.id}`)
     }catch{
         console.error('ERROR IN PUT', err)
     }
@@ -104,7 +105,8 @@ const storeInstance = createStore(
         movies,
         genres,
         detailMovie,
-        addMovie
+        addMovie,
+        
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  /* font-family: 'Courier New', Courier, monospace; */
+  font-family: roboto;
 }
 
 
@@ -21,4 +23,62 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* .listPoster {
+  padding-right: auto;
+  padding-left: auto;
+  ;
+} */
+
+.detailGenre {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.detailGenreText {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.card {
+  padding-left: auto;
+  padding-right: auto;
+}
+
+.detailCard {
+  margin: auto;
+}
+
+
+.listCard {
+  margin: auto;
+  background-color: cornsilk;
+}
+
+header {
+  background-color: black;
+}
+
+.headerText {
+  color: #fff8dc;
+  margin-top: 0;
+  height: 90px;
+  padding-top: 40px;
+  
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerDiv {
+  width: 230px;
+}
+
+.cardDiv {
+  display: flex;
+  flex-direction: column;
 }
