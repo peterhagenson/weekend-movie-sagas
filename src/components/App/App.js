@@ -8,7 +8,10 @@ import EditMovie from '../EditMovie/EditMovie'
 function App() {
   return (
     <div className="App">
-      <h1>The Movies Saga!</h1>
+      <header>
+      <h1 className="headerText">The Movies Saga!</h1>
+      </header>
+      
       <Router>        
         <Route path="/" exact>
           <MovieList />

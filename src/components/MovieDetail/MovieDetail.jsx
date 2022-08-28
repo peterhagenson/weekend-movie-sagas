@@ -3,6 +3,8 @@ import { useHistory, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import EditMovie from '../EditMovie/EditMovie'
 import { useEffect } from 'react'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 
 
@@ -49,43 +51,47 @@ function MovieDetail() {
     return (
         <Router >
             <Route path="/details/:id">
-
-                <div>
-                    {/* <table>
+                <Card sx={{ width: 700, borderRadius: '16px' }} variant="outlined" className="detailCard">
+                    <CardContent>
+                        <div>
+                            {/* <table>
                         <tbody> */}
-                    {detailMovie.map((movie) => {
-                        return (
+                            {detailMovie.map((movie) => {
+                                return (
 
-                            <>
-                                <h1>{movie.title}</h1>
-                                <img src={movie.poster}></img>
-                                <div class="detailGenre">
-                                    {movie.array_agg.map((genre) => {
+                                    <>
+                                        <h1>{movie.title}</h1>
+                                        <img src={movie.poster}></img>
+                                        <div class="detailGenre">
+                                            {movie.array_agg.map((genre) => {
 
-                                        return (
+                                                return (
 
-                                            <p class="detailGenreText">{genre}</p>
+                                                    <p class="detailGenreText">{genre}</p>
 
-                                        )
+                                                )
 
-                                    })}
-                                </div>
-                                <h3>{movie.description}</h3>
-                                {/* <Route path="/editMovie" exact>
+                                            })}
+                                        </div>
+                                        <h3>{movie.description}</h3>
+                                        {/* <Route path="/editMovie" exact>
                                     <EditMovie movie={movie} />
                                 </Route> */}
 
-                            </>
+                                    </>
 
-                        )
+                                )
 
-                    })}
+                            })}
 
-                    {/* </tbody>
+                            {/* </tbody>
                     </table> */}
-                </div>
+                        </div>
+                    </CardContent>
+                </Card >
                 <button onClick={navToEdit}>Edit Movie</button>
                 <button onClick={navToHome}>Back to List</button>
+
             </Route>
         </Router>
     )

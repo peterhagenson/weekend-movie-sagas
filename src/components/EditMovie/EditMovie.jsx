@@ -46,7 +46,6 @@ function EditMovie() {
                         <button type="submit">Save</button>
                         {/* needs to empty variables and go do details page */}
                         <button onClick={cancelEdit}>Cancel</button>
-                        <p>params object: {JSON.stringify(params)}</p>
 
                     </form>
                 </>

@@ -24,7 +24,9 @@
 }
 
 /* .listPoster {
-  padding: 20px;
+  padding-right: auto;
+  padding-left: auto;
+  ;
 } */
 
 .detailGenre {
@@ -36,4 +38,27 @@
 .detailGenreText {
   padding-right: 10px;
   padding-left: 10px;
+}
+
+.card {
+  padding-left: auto;
+  padding-right: auto;
+}
+
+.detailCard {
+  margin: auto;
+}
+
+
+.listCard {
+  margin: auto;
+  background-color: cornsilk;
+}
+
+header {
+  background-color: black;
+}
+
+.headerText {
+  color: cornsilk;
 }
