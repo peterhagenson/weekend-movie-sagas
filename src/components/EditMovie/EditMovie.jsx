@@ -4,6 +4,23 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import React from 'react'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#212121',
+            spacing: 4,
+
+        },
+        secondary: {
+            main: '#ffc107',
+        },
+    },
+});
 
 function EditMovie() {
 
@@ -28,6 +45,7 @@ function EditMovie() {
                 id: params.id
             }
         })
+        history.push(`/details/${params.id}`)
     }
 
     const cancelEdit = () => {
@@ -37,18 +55,30 @@ function EditMovie() {
     return (
         <Router>
             <Route path="/editMovie/:id">
-                <>
+                <ThemeProvider theme={theme}>
+                    <Card sx={{ width: 700, borderRadius: '16px' }} variant="outlined" className="detailCard">
+                        <CardContent>
+                            <>
 
-                    <form onSubmit={editMovie}>
-                        <input onChange={(event) => (setNewTitle(event.target.value))} placeholder="new title"></input>
-                        <textarea onChange={(event) => (setNewDescription(event.target.value))} placeholder="new description"></textarea>
-                        {/* needs to set variables and go to details page */}
-                        <button type="submit">Save</button>
-                        {/* needs to empty variables and go do details page */}
-                        <button onClick={cancelEdit}>Cancel</button>
+                                <form onSubmit={editMovie}>
+                                    <div>
+                                        <input onChange={(event) => (setNewTitle(event.target.value))} placeholder="new title"></input>
+                                    </div>
+                                    <div>
+                                        <textarea onChange={(event) => (setNewDescription(event.target.value))} placeholder="new description"></textarea>
+                                    </div>
+                                    {/* needs to set variables and go to details page */}
+                                    <div>
+                                        <Button type="submit" variant="outlined">Save</Button>
+                                        {/* needs to empty variables and go do details page */}
+                                        <Button onClick={cancelEdit} variant="outlined">Cancel</Button>
+                                    </div>
 
-                    </form>
-                </>
+                                </form>
+                            </>
+                        </CardContent>
+                    </Card >
+                </ThemeProvider>
             </Route>
         </Router>
     )

@@ -5,6 +5,21 @@ import EditMovie from '../EditMovie/EditMovie'
 import { useEffect } from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#212121',
+            spacing: 4,
+
+        },
+        secondary: {
+            main: '#ffc107',
+        },
+    },
+});
 
 
 
@@ -51,47 +66,48 @@ function MovieDetail() {
     return (
         <Router >
             <Route path="/details/:id">
-                <Card sx={{ width: 700, borderRadius: '16px' }} variant="outlined" className="detailCard">
-                    <CardContent>
-                        <div>
-                            {/* <table>
+                <ThemeProvider theme={theme}>
+                    <Card sx={{ width: 700, borderRadius: '16px' }} variant="outlined" className="detailCard">
+                        <CardContent>
+                            <div>
+                                {/* <table>
                         <tbody> */}
-                            {detailMovie.map((movie) => {
-                                return (
+                                {detailMovie.map((movie) => {
+                                    return (
 
-                                    <>
-                                        <h1>{movie.title}</h1>
-                                        <img src={movie.poster}></img>
-                                        <div class="detailGenre">
-                                            {movie.array_agg.map((genre) => {
+                                        <>
+                                            <h1>{movie.title}</h1>
+                                            <img src={movie.poster}></img>
+                                            <div class="detailGenre">
+                                                {movie.array_agg.map((genre) => {
 
-                                                return (
+                                                    return (
 
-                                                    <p class="detailGenreText">{genre}</p>
+                                                        <p class="detailGenreText">{genre}</p>
 
-                                                )
+                                                    )
 
-                                            })}
-                                        </div>
-                                        <h3>{movie.description}</h3>
-                                        {/* <Route path="/editMovie" exact>
+                                                })}
+                                            </div>
+                                            <h3>{movie.description}</h3>
+                                            {/* <Route path="/editMovie" exact>
                                     <EditMovie movie={movie} />
                                 </Route> */}
 
-                                    </>
+                                        </>
 
-                                )
+                                    )
 
-                            })}
+                                })}
 
-                            {/* </tbody>
+                                {/* </tbody>
                     </table> */}
-                        </div>
-                    </CardContent>
-                </Card >
-                <button onClick={navToEdit}>Edit Movie</button>
-                <button onClick={navToHome}>Back to List</button>
-
+                            </div>
+                        </CardContent>
+                    </Card >
+                    <Button onClick={navToEdit} variant="outlined">Edit Movie</Button>
+                    <Button onClick={navToHome} variant="outlined">Back to List</Button>
+                </ThemeProvider>
             </Route>
         </Router>
     )

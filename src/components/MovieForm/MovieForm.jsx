@@ -4,6 +4,25 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#212121',
+            spacing: 4,
+
+        },
+        secondary: {
+            main: '#ffc107',
+        },
+    },
+});
+
+
 
 function MovieForm() {
 
@@ -35,37 +54,58 @@ function MovieForm() {
 
     }
 
+    const backToList = () => {
+        history.push('/')
+    }
+
 
 
 
     return (
         <Router>
             <Route path="/addMovie">
-                <form onSubmit={addNewMovie}>
-                    <input onChange={(event) => (setTitle(event.target.value))} placeholder="movie title"></input>
-                    <select onChange={(event) => (setGenre(event.target.value))} placeholder="movie genre" id="genre">
+                <ThemeProvider theme={theme}>
+                    <Card sx={{ width: 700, borderRadius: '16px' }} variant="outlined" className="detailCard">
+                        <CardContent>
 
-                        <option value="genre"></option>
-                        <option id="1" value="1">Adventure</option>
-                        <option id="2" value="2">Animated</option>
-                        <option id="3" value="3">Biographical</option>
-                        <option id="4" value="4">Comedy</option>
-                        <option id="5" value="5">Disaster</option>
-                        <option id="6" value="6">Drama</option>
-                        <option id="7" value="7">Epic</option>
-                        <option id="8" value="8">Fantasy</option>
-                        <option id="9" value="9">Musical</option>
-                        <option id="10" value="10">Romantic</option>
-                        <option id="11" value="11">Science Fiction</option>
-                        <option id="12" value="12">Space-Opera</option>
-                        <option id="13" value="13">Superhero</option>
-                    </select>
-                    <input onChange={(event) => (setPosterUrl(event.target.value))} placeholder="movie poster url"></input>
-                    <textarea onChange={(event) => (setDescription(event.target.value))} placeholder="movie description"></textarea>
-                    <button type="submit">Submit</button>
-                    <button>Cancel</button>
+                            <form onSubmit={addNewMovie}>
+                                <div>
+                                    <input onChange={(event) => (setTitle(event.target.value))} placeholder="movie title"></input>
+                                </div>
+                                <div>
+                                    <select onChange={(event) => (setGenre(event.target.value))} placeholder="movie genre" id="genre">
 
-                </form>
+                                        <option value="genre"></option>
+                                        <option id="1" value="1">Adventure</option>
+                                        <option id="2" value="2">Animated</option>
+                                        <option id="3" value="3">Biographical</option>
+                                        <option id="4" value="4">Comedy</option>
+                                        <option id="5" value="5">Disaster</option>
+                                        <option id="6" value="6">Drama</option>
+                                        <option id="7" value="7">Epic</option>
+                                        <option id="8" value="8">Fantasy</option>
+                                        <option id="9" value="9">Musical</option>
+                                        <option id="10" value="10">Romantic</option>
+                                        <option id="11" value="11">Science Fiction</option>
+                                        <option id="12" value="12">Space-Opera</option>
+                                        <option id="13" value="13">Superhero</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <input onChange={(event) => (setPosterUrl(event.target.value))} placeholder="movie poster url"></input>
+                                </div>
+                                <div>
+                                    <textarea onChange={(event) => (setDescription(event.target.value))} placeholder="movie description"></textarea>
+                                </div>
+                                <div>
+                                    <Button type="submit" variant="outlined">Submit</Button>
+                                    <Button variant="outlined" onClick={backToList}>Cancel</Button>
+                                </div>
+
+                            </form>
+                        </CardContent>
+                    </Card >
+                </ThemeProvider>
             </Route>
         </Router>
     )

@@ -4,6 +4,12 @@ import MovieList from '../MovieList/MovieList'
 import MovieDetail from '../MovieDetail/MovieDetail'
 import MovieForm from '../MovieForm/MovieForm'
 import EditMovie from '../EditMovie/EditMovie'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import "@fontsource/roboto";
+
 
 function App() {
   return (
@@ -12,7 +18,8 @@ function App() {
       <h1 className="headerText">The Movies Saga!</h1>
       </header>
       
-      <Router>        
+      <Router>     
+      
         <Route path="/" exact>
           <MovieList />
         </Route>
@@ -28,7 +35,9 @@ function App() {
         {/* Details page */}
 
         {/* Add Movie page */}
+        
       </Router>
+     
     </div>
   );
 }
