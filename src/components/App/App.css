@@ -63,4 +63,22 @@ header {
 
 .headerText {
   color: cornsilk;
+  margin-top: 0;
+  height: 90px;
+  padding-top: 40px;
+  
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerDiv {
+  width: 230px;
+}
+
+.cardDiv {
+  display: flex;
+  flex-direction: column;
 }

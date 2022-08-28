@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
 
 import { useState } from 'react';
 
@@ -67,24 +68,31 @@ function MovieList() {
                 <ThemeProvider theme={theme}>
                     <main>
 
-                        <Button onClick={toAddMovie} variant="outlined">Add Movie</Button>
+
 
                         <form onSubmit={searchMovies}>
-                            <div>
-                                <input onChange={(event) => (setSearchTerm(event.target.value))} placeholder="movie title"></input>
-                                <Button type="submit" variant="outlined">Search</Button>
-                            </div>
+                            {/* <div>
+                                <TextField onChange={(event) => (setSearchTerm(event.target.value))} placeholder="movie title" size="small" />
+                                <Button type="submit" variant="outlined" sx={{ ml: 2 }}>Search</Button>
+                            </div> */}
                         </form>
 
-                        <h1>Browse Movies</h1>
-
+                        <div className="headerContainer">
+                            <div className="headerDiv"></div>
+                            <div className="headerDiv">
+                                <h1>Browse Movies</h1>
+                            </div>
+                            <div className="headerDiv">
+                                <Button onClick={toAddMovie} variant="outlined">Add Movie</Button>
+                            </div>
+                        </div>
                         <section className="movies">
                             {movies.map(movie => {
                                 return (
-                                    <Card sx={{ width: 200, borderRadius: '16px' }} variant="outlined" className="listCard">
+                                    <Card sx={{ width: 200, height: 370, mb: 2, borderRadius: '16px' }} variant="outlined" className="listCard">
 
                                         <CardContent >
-                                            <div key={movie.id} >
+                                            <div key={movie.id} className="cardDiv">
                                                 <h3>{movie.title}</h3>
                                                 <img className="listPoster" src={movie.poster} alt={movie.title} onClick={() => toDetails(movie.id)} />
 

@@ -78,7 +78,7 @@ function MovieDetail() {
                                         <>
                                             <h1>{movie.title}</h1>
                                             <img src={movie.poster}></img>
-                                            <div class="detailGenre">
+                                            <div className="detailGenre">
                                                 {movie.array_agg.map((genre) => {
 
                                                     return (
@@ -105,8 +105,8 @@ function MovieDetail() {
                             </div>
                         </CardContent>
                     </Card >
-                    <Button onClick={navToEdit} variant="outlined">Edit Movie</Button>
-                    <Button onClick={navToHome} variant="outlined">Back to List</Button>
+                    <Button onClick={navToEdit} sx={{ mr: 1, mt: 2 }} variant="outlined">Edit Movie</Button>
+                    <Button onClick={navToHome} sx={{ ml: 1, mt: 2 }} variant="outlined">Back to List</Button>
                 </ThemeProvider>
             </Route>
         </Router>
