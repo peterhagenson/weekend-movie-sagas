@@ -46,7 +46,7 @@ function EditMovie() {
                 id: params.id
             }
         })
-        // history.push(`/details/${params.id}`)
+        history.push(`/details/${params.id}`)
     }
 
     const cancelEdit = () => {
