@@ -1,7 +1,7 @@
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { useHistory, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
-import EditMovie from '../EditMovie/EditMovie'
+// import EditMovie from '../EditMovie/EditMovie'
 import { useEffect } from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
