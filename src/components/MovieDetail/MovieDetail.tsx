@@ -107,7 +107,7 @@ function MovieDetail() {
                                         <>
                                             <h1>{movie.title}</h1>
                                             <img src={movie.poster}></img>
-                                            <div className="detailGenre">
+                                            {/* <div className="detailGenre">
                                                 {movie.array_agg.map((genre: string) => {
 
                                                     return (
@@ -117,7 +117,7 @@ function MovieDetail() {
                                                     )
 
                                                 })}
-                                            </div>
+                                            </div> */}
                                             <h3>{movie.description}</h3>
                                             {/* <Route path="/editMovie" exact>
                                     <EditMovie movie={movie} />
