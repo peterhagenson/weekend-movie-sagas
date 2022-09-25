@@ -21,20 +21,20 @@ function* rootSaga() {
 
 function* editMovie(action) {
     console.log(action.payload)
-    try{
+    try {
         yield axios.put('/api/movie', action.payload);
-        yield put({type: 'FETCH_MOVIES'})
+        yield put({ type: 'FETCH_MOVIES' })
         history.push(`/details/${params.id}`)
-    }catch{
+    } catch {
         console.error('ERROR IN PUT', err)
     }
 }
 
 function* addMovie(action) {
-    try{
+    try {
         yield axios.post('/api/movie', action.payload);
-        yield put({type: 'FETCH_MOVIES'})
-         }catch{
+        yield put({ type: 'FETCH_MOVIES' })
+    } catch {
         console.error('ERROR IN POST', err)
     }
 }
@@ -44,7 +44,7 @@ function* fetchDetailMovie(action) {
     try {
         const detailMovie = yield axios.get(`/api/movie/${action.payload}`)
         console.log(detailMovie.data)
-        yield put ({type: 'SET_DETAIL_MOVIE', payload: detailMovie.data})
+        yield put({ type: 'SET_DETAIL_MOVIE', payload: detailMovie.data })
     } catch {
         console.log('set detail movie error')
     }
@@ -60,7 +60,7 @@ function* fetchAllMovies() {
     } catch {
         console.log('get all error');
     }
-        
+
 }
 
 // Create sagaMiddleware
@@ -106,7 +106,7 @@ const storeInstance = createStore(
         genres,
         detailMovie,
         addMovie,
-        
+
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
@@ -118,8 +118,9 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={storeInstance}>
-        <App />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
 );
+

@@ -7,12 +7,28 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+// import storeInstance from '../index.js';
+
+
+
+
+
+declare module '@mui/material/styles' {
+interface Theme {
+    palette: {
+        primary: {
+            main: string,
+            // spacing: number,
+        }
+    }
+}
+}
 
 const theme = createTheme({
     palette: {
         primary: {
             main: '#212121',
-            spacing: 4,
+            // spacing: 4,
 
         },
         secondary: {
@@ -32,12 +48,23 @@ function MovieDetail() {
         getDetail();
     }, []);
 
-    const detailMovie = useSelector(store => store.detailMovie)
+    const detailMovie = useSelector((store: any) => store.detailMovie)
+
+
+    type idParams = {
+        id: string;
+    };
+
+    interface Movie  {
+        title: string;
+        poster: string;
+        genre: string[];
+        description: string;
+    }
 
 
 
-
-    const params = useParams();
+    const params = useParams<idParams>();
 
     const history = useHistory();
 
@@ -64,6 +91,8 @@ function MovieDetail() {
 
 
     return (
+        
+
         <Router >
             <Route path="/details/:id">
                 <ThemeProvider theme={theme}>
@@ -72,18 +101,18 @@ function MovieDetail() {
                             <div>
                                 {/* <table>
                         <tbody> */}
-                                {detailMovie.map((movie) => {
+                                {detailMovie.map((movie: Movie) => {
                                     return (
 
                                         <>
                                             <h1>{movie.title}</h1>
                                             <img src={movie.poster}></img>
                                             <div className="detailGenre">
-                                                {movie.array_agg.map((genre) => {
+                                                {movie.array_agg.map((genre: string) => {
 
                                                     return (
 
-                                                        <p class="detailGenreText">{genre}</p>
+                                                        <p className="detailGenreText">{genre}</p>
 
                                                     )
 
