@@ -13,16 +13,16 @@ import Button from '@mui/material/Button';
 
 
 
-declare module '@mui/material/styles' {
-interface Theme {
-    palette: {
-        primary: {
-            main: string,
-            // spacing: number,
-        }
-    }
-}
-}
+// declare module '@mui/material/styles' {
+// interface Theme {
+//     palette: {
+//         primary: {
+//             main: string,
+//             // spacing: number,
+//         }
+//     }
+// }
+// }
 
 const theme = createTheme({
     palette: {
@@ -60,6 +60,7 @@ function MovieDetail() {
         poster: string;
         genre: string[];
         description: string;
+        array_agg: any;
     }
 
 
@@ -107,7 +108,7 @@ function MovieDetail() {
                                         <>
                                             <h1>{movie.title}</h1>
                                             <img src={movie.poster}></img>
-                                            {/* <div className="detailGenre">
+                                            <div className="detailGenre">
                                                 {movie.array_agg.map((genre: string) => {
 
                                                     return (
@@ -117,7 +118,7 @@ function MovieDetail() {
                                                     )
 
                                                 })}
-                                            </div> */}
+                                            </div>
                                             <h3>{movie.description}</h3>
                                             {/* <Route path="/editMovie" exact>
                                     <EditMovie movie={movie} />
